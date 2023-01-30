@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoLocation</title>
+</head>
+<body>
+    <h1 style="text-align: center; font-weight: bold; font-size: 70px;">Geolocation</h1>
+    <button onclick="getLoc()" style="font-size: 15px;
+    font-weight: bold; background: rgb(166, 185, 204);color: rgb(255, 255, 255);
+    width: 150px;height: 70px;padding: 20px;margin-top: 100px;margin-left: 690px;
+    text-align: center;padding-top: 15px;
+    text-decoration: none;border-radius: 15px; cursor: pointer;">share location</button>
+    <script>
+        function getLoc() {
+            navigator.geolocation.getCurrentPosition(showLoc, showErr, options);
+        }
+        function showLoc(e) {
+            console.log(e);
+            var long = e.coords.longitude;
+            var lat = e.coords.latitude;
+            console.log(e, long, lat);
+            location.assign("http://maps.google.com/maps?q" + lat + ",+" + long);
+        }
+        function showErr(x) {
+            switch (x.code) {
+                case 0:
+                    console.log(x.message);
+                    break;
+                case 1:
+                    console.log(x.message);
+                    break;
+                case 2:
+                    console.log(x.message);
+                    break;
+                case 3:
+                    console.log("no time");
+                    break;
+            }
+        }
+        var options = {
+          // timeout:0
+        };
+    </script>
+
+
+    
+</body>
+</html>
